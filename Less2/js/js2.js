@@ -59,3 +59,53 @@ console.log("Тарелок осталось "+ plate)
 //
 console.log("");
 
+//Создайте 2 массива равной длины, выведите массивы на экран.
+// Посчитайте среднее арифметическое элементов каждого массива и сообщите, для какого из массивов это значение
+// оказалось больше (либо сообщите, что их средние арифметические равны).
+let array2 = [1.0,2.0,3.0,4.0,5.0];
+let array3 = [2.0,3.0,3.0,4.0,5.0];
+
+console.log("Массив1");
+for(let i=0;i<array2.length;i++)
+    console.log(array2[i]);
+console.log("Массив2");
+for(let i=0;i<array3.length;i++)
+    console.log(array3[i]);
+
+let a_mean1 = 0;
+let a_mean2 = 0;
+for(let i=0;i<array2.length;i++)
+    a_mean1+=array2[i];
+a_mean1/=array2.length;
+for(let i=0;i<array3.length;i++)
+    a_mean2+=array3[i];
+a_mean2/=array3.length;
+console.log("Cреднее арифметическое первого массива: "+a_mean1);
+console.log("Cреднее арифметическое второго массива: "+a_mean2);
+if(a_mean1>a_mean2)
+    console.log("Cреднее арифметическое значение элементов первого массива больше");
+else if(a_mean1<a_mean2)
+    console.log("Cреднее арифметическое значение элементов второго массива больше");
+else{
+    console.log("Cредние арифметические значения массивов равны");
+}
+//Пользователь вводит число, создать массив заданного размера, вывести элементы массива в обратном порядке
+console.log("");
+let str = "1 2 3 4 5 6 7 8 9 10";
+let array4 = str.split(" ",prompt("Введите целое число от 1 до 10"));
+array4.reverse();
+console.log(array4);
+// Напишите цикл, который выводит в консоль треугольник из символов #, высотой 10 символов
+console.log("");
+let j2=1;
+for(let i=0;i<10;i++)
+{
+    for(let i2=0;i2<j2;i2++)
+    {
+        console.log("#");
+    }
+    console.log("");
+    j2++;
+
+}
+
