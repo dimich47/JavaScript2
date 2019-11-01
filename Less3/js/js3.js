@@ -10,7 +10,7 @@ function summ(num){
 }
 let a=0;
 a=summ(26);
-console.log("Cумма чисел = " + a);
+console.log("Cумма чисел числа 26 = " + a);
 
 //Напишите функцию range, принимающую три аргумента, два обязательных: начало и конец диапазона, третий аргумент -
 // необязательный (если он не задан, шаг равен единице) – шаг для построения массива. Функция возвращает массив,
@@ -73,6 +73,7 @@ function day (num) {
     }
 
 }
+
 console.log(21+day(1));
 console.log(8+day(8));
 console.log(12+day(12));
@@ -87,44 +88,40 @@ console.log(120+day(120));
 // элементов на экран. Найти массив с максимальной суммой элементов. Вывести его на экран еще раз. Генерация массива
 // и подсчет суммы - разные функции
 
-let arr1=[], arr2=[],arr3=[],arr4=[],arr5=[],sum=[];
-function random(num) {
+let arr1=[], arr2=[],arr3=[],arr4=[],arr5=[];
+function random(num)
+{
     let arr=[];
     for(let i=0;i<num;i++)
+    {
         arr[i]=Math.random(num)*100 ^ 0;
-
+    }
     return arr;
 }
-function sumArr(mass){
-    let summ=0
+
+let max_sum=0;
+let arr_max=[];
+
+function sumArr(mass)
+{
+    let summ=0;
     for (let i=0;i<mass.length;i++)
     {
         summ+=mass[i];
     }
+    if(summ > max_sum)
+    {
+        max_sum=summ;
+        arr_max = mass;
+    }
     return summ;
 }
-function sumArr2(mass){
-    let j=0;
-    let maxindex=0;
-    for (let i=0;i<mass.length-1;i++)
-    {
-        if(mass[i-j]>mass[i+1])
-        {
-            maxindex=i-j;
-            j++;
-        }
-        else{
-            maxindex=i+1;
-        }
+console.log("");
+console.log("массив 1: " + (arr1=random(5)) + " Cумма его элементов= " + (sumArr(arr1)) );
+console.log("массив 2: " + (arr2=random(6)) + " Cумма его элементов= " + (sumArr(arr2)) );
+console.log("массив 3: " + (arr3=random(7)) + " Cумма его элементов= " + (sumArr(arr3)) );
+console.log("массив 4: " + (arr4=random(3)) + " Cумма его элементов= " + (sumArr(arr4)) );
+console.log("массив 5: " + (arr5=random(7)) + " Cумма его элементов= " + (sumArr(arr5)) );
 
-    }
-    return maxindex;
-}
-
-console.log("массив 1: "+ (arr1=random(5)) + " Cумма его элементов= "+ (sum[0]=sumArr(arr1)) );
-console.log("массив 2: "+ (arr2=random(6))+ " Cумма его элементов= "+ (sum[1]=sumArr(arr2)) );
-console.log("массив 3: "+ (arr3=random(7))+ " Cумма его элементов= "+ (sum[2]=sumArr(arr3)) );
-console.log("массив 4: "+ (arr4=random(3))+ " Cумма его элементов= "+ (sum[3]=sumArr(arr4)) );
-console.log("массив 5: "+ (arr5=random(7))+ " Cумма его элементов= "+ (sum[4]=sumArr(arr5)) );
-
-console.log(sumArr2(sum));
+console.log("");
+console.log("Массив с максимальной суммой элементов: " + arr_max);
