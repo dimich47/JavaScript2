@@ -89,3 +89,34 @@ addToCart(goods,"Арфа", 4);
 addToCart(goods,"Арфа", 1);
 console.log("");
 
+//Напишите функцию, которая отсортирует массив объектов books по значению свойства title. Массив в файле forHw.js.
+// Функцию сортировки разберите самостоятельно (не получится, разбер на занятии).
+
+// функция динамической сортировки
+function compareValues(key) {
+    return function(a, b) {
+        if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+            // свойства нет ни в одном из объектов
+            return 0;
+        }
+        const varA = (typeof a[key] === 'string') ?         //для преобразования регистра
+            a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === 'string') ?
+            b[key].toUpperCase() : b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+            comparison = 1;
+        } else if (varA < varB) {
+            comparison = -1;
+        }
+        return comparison;
+    };
+}
+
+let books2=books.slice(); //создаем второй массив чтобы не затереть исходный
+console.log("Не сортированный массив: ");
+console.log(books);
+books2.sort(compareValues('title'));
+console.log("Cортированный массив: ");
+console.log(books2);
