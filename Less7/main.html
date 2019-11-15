@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<form name="lesson">
+
 <div id="less3">
 
 </div>
+<fieldset style="margin: 20px">
 <div id="check">
     <label ><input  type="checkbox">Отметьте, если указать другую информацию</label>
     <input type="text" disabled>
 </div>
+</fieldset>
+
+
+<fieldset>
+    <legend>Текстовый ввод</legend>
+    <div>
+        <label for="login">Введите логин</label>
+        <input name="login" id="login" type="text">
+        <span class="info-block1">
+                Логин должен содержать минимум 3 символа
+            </span>
+    </div>
+    <div>
+        <label for="pwd">Введите пароль</label>
+        <input name="pwd" id="pwd" type="password">
+        <span class="info-block2">
+                Пароль должен содержать минимум 6 символов
+            </span>
+    </div>
+</fieldset>
+    <input type="submit" value="Отправить">
+    <input type="reset" value="Очистить">
+</form>
 <script src="js/js.js"></script>
 </body>
 </html>

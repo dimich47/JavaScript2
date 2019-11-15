@@ -140,10 +140,7 @@ function genElem(numArr,numPrize){                                            //
         j++;
     }
     num2=randNumPrize(numPrize);       // формируем счастливые числа
-    console.log(num2);
-
-
-
+    console.log("Счастливые номера " + num2);
 
     myDiv.append(div1);
     myDiv.append(div2);
@@ -196,10 +193,7 @@ function prize(event){                                   // открытие к�
             event.target.style.background = "red";
             event.target.innerText = "Ничего нет("
         }
-
     }
-
-
 }
 
 genElem(rowForPrize,numberPrize);               // формируем карточки
@@ -225,8 +219,63 @@ function checked()
          last.setAttribute("disabled","true");
      }
 }
+// ЗАДАНИЕ 4 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+let myForm = document.forms.lesson;
+let loginInput = document.querySelector("#login");
+let passInput = document.querySelector("#pwd");
+
+loginInput.addEventListener("focus", focusOnElem);
+passInput.addEventListener("focus", focusOnElem2);
 
 
+loginInput.addEventListener("blur", focusOutElem);
+passInput.addEventListener("blur", focusOutElem2);
+myForm.addEventListener("submit", takeForm);
+myForm.addEventListener("reset", resForm);
+
+
+function focusOnElem() {
+    this.nextElementSibling.classList.add("error");
+}
+function focusOnElem2() {
+    this.nextElementSibling.classList.add("error");
+}
+function focusOutElem() {
+    // success
+    if (this.value.length < 3 || this.value.length > 10){
+        this.nextElementSibling.classList.add("error");
+    } else {
+        this.nextElementSibling.classList.remove("error");
+        this.nextElementSibling.classList.add("success");
+    }
+}
+function focusOutElem2() {
+    // success
+    if (this.value.length < 6){
+        this.nextElementSibling.classList.add("error");
+    } else {
+        this.nextElementSibling.classList.remove("error");
+        this.nextElementSibling.classList.add("success");
+    }
+}
+
+function takeForm(event) {
+    event.preventDefault();// отменяет событие по умолчанию
+    console.log("Отправка формы");
+    //console.log(this.elements.login.value);
+    let formData = new FormData(this);
+    console.log("Login: " + formData.get("login"));
+    console.log("Password: " + formData.get("pwd"));
+}
+function resForm(event) {
+    console.log("Очистка формы");
+    loginInput.nextElementSibling.classList.toggle("error");
+    loginInput.nextElementSibling.classList.toggle("success");
+    passInput.nextElementSibling.classList.toggle("error");
+    passInput.nextElementSibling.classList.toggle("success");
+}
 
 
 
