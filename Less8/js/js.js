@@ -92,23 +92,24 @@ function move(obj, event) {             //перемещение объекта 
     // a - перемещение влево
     // d - перемещение вправо
     // s - перемещение вниз
-    console.log(event.code);
-    if (event.code === "KeyD") {
+
+    console.log(obj.y);
+    if (event.code === "KeyD" && obj.x<=(canvas.width-138)) {
         console.log("перемещение вправо");
         clearImg(obj);
         obj.x += 2;
         drawImg(obj, 1);
-    } else if (event.code === "KeyA") {
+    } else if (event.code === "KeyA" && obj.x>=0) {
         console.log("перемещение влево");
         clearImg(obj);
         obj.x -= 2;
         drawImg(obj, 1);
-    } else if (event.code === "KeyW") {
+    } else if (event.code === "KeyW" && obj.y>=0) {
         console.log("перемещение вверх");
         clearImg(obj);
         obj.y -= 2;
         drawImg(obj, 1);
-    } else if (event.code === "KeyS") {
+    } else if (event.code === "KeyS" && obj.y<=(canvas.height-138)) {
         console.log("перемещение вниз");
         clearImg(obj);
         obj.y += 2;
