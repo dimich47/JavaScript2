@@ -57,36 +57,37 @@ function generateTable(data)
 
 
     document.body.prepend(table); //расположить снизу
-}
-generateTable(goods); // генерация таблицы с товарами
-
 // ЗАДАНИЕ 1   //////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-let titleTable= document.querySelector("tr:first-child");
-let table = document.querySelector("table");                //      ???? - ПОЧЕМУ НЕ РАБОТАЕТ -document.getElementsByTagName ???
+    let titleTable= document.querySelector("tr:first-child");
 
-titleTable.addEventListener("click",tableSort);
+    titleTable.addEventListener("click",tableSort);
+    function tableSort(event)
+    {
+        //event.target-элемент на котором сработал "click"
+        let clickElem = event.target.innerText.toLowerCase();
 
-function tableSort(event)
-{
-    //event.target-элемент на котором сработал "click"
-    let clickElem = event.target.innerText.toLowerCase();
+        if(clickElem=== "title")
+        {
+            goods.sort( (a,b)=>a.title.localeCompare(b.title));
+        }
+        if(clickElem=== "price")
+        {
+            goods.sort( (a,b)=>a.price - b.price);
+        }
+        if(clickElem=== "count")
+        {
+            goods.sort( (a,b)=>a.count - b.count);
+        }
 
-    if(clickElem=== "title")
-    {
-        goods.sort( (a,b)=>a.title.localeCompare(b.title));
+        table.parentNode.removeChild(table);
+        generateTable(goods);
+        console.log("click");
     }
-    if(clickElem=== "price")
-    {
-        goods.sort( (a,b)=>a.price - b.price);
-    }
-    if(clickElem=== "count")
-    {
-        goods.sort( (a,b)=>a.count - b.count);
-    }
-    table.parentNode.removeChild(table);
-    generateTable(goods);
 }
+
+generateTable(goods); // генерация таблицы с товарами
+
 // ЗАДАНИЕ 2 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 
